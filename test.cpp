@@ -1,12 +1,12 @@
 #include <iostream>
-#include <vector>
+#include <string.h>
 
 using namespace std;
 
 int main(){
-    vector<int> numbers {10,20,30};
+    char* a ="1122";
 
-    for(auto n:numbers){
-        cout << n <<endl;
-    }
-}
+    int num=0;
+    num = atoi(a);
+    cout << num<<endl;
+
