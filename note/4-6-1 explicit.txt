@@ -1,0 +1,22 @@
+explicit란?
+
+암시적 변환이란 
+MyString(const char* name);이라는 생성자가 있으면
+
+DosomethingWithString(MyString s) 일 때 DosomethingWithString("ABC")로 선언해도 알아서 생성자에 맞게 객체를 생성 후 값을 넘긴다.
+하지만 예상치 못한 경우에 암시적 변환이 일어날 수도 있어 그것을 방지하기위해 explicit을 사용한다.
+
+사용방법 : 생성자 앞부분에 explicit을 적어주면 된다.
+ex) explicit MyString(int a);
+
+explicit으로 선언시 생성자를 암시적 변환을 수행하지 못하도록 한다.
+
+ex)
+MyString s = "abc";  // MyString s("abc")
+MyString s = 5;      // MyString s(5)
+
+에서 Mystring(int a)에 explicit Mystring(int a) 를 선언 시
+
+MyString s(5);   // 허용
+MyString s = 5;  // 컴파일 오류!
+
