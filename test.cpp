@@ -4,9 +4,9 @@
 using namespace std;
 
 int main(){
-    char* a ="1122";
+    int a=1;
+    float b = 2.0;
+    cout << b << "\t" << a<<endl;
+    cout << a+b<<endl;
 
-    int num=0;
-    num = atoi(a);
-    cout << num<<endl;
-
+}

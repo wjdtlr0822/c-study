@@ -35,3 +35,4 @@ int main(){
 }
 
 //friend선언 시 class A에 있는 private영역에 접근 가능하다.
+//반대로 A에서는 B와 func()의 private 개체들에 접근할 수 없다.
