@@ -20,8 +20,8 @@ T add_num2(T &t){
     return t+num;
 }
 
-template <typename a>
-void print_array(const a arr){
+template <typename T>
+void print_array(const T arr){
     cout << "arr ÀÇ Å©±â " << sizeof(arr) <<endl;
     for(int i=0;i<arr.size();i++){
         cout << arr[i]<<endl;
