@@ -4,7 +4,7 @@
 class Test {
   char c;
 
- public:
+public:
   Test(char _c) {
     c = _c;
     std::cout << " create " << c << std::endl;

@@ -1,0 +1,11 @@
+template <typename A,typename B,typename C>
+class test{};
+에서 A가 int / C가 double 이길 원한다면
+
+template <typename B>
+class test<int,B,double>{};
+와 같이 써주면 되고 B도 특수화를 하고싶다면
+
+template <>
+class test<int,int,double>{};
+와 같이 사용하면 된다.
