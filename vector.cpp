@@ -9,6 +9,14 @@
 
 using namespace std;
 
+template <typename T>
+void print_vector(vector<T> vec){
+    cout <<"함수에서 호출 T : "<<endl;
+    for(T i:vec){
+        cout << i << endl;
+    }
+}
+
 int main(){
     vector<int> vec;
     vec.push_back(1);
@@ -55,6 +63,8 @@ int main(){
     for(int i:vec){
         cout << i <<endl;
     }
+
+    print_vector(vec);
 }
 
 //벡터의 push,pop 은 o(1)의 속도로 빠르지만
