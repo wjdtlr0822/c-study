@@ -1,12 +1,21 @@
 #include <iostream>
-#include <string.h>
+#include <string>
+#include <typeinfo>
 
 using namespace std;
 
 int main(){
-    int a=1;
-    float b = 2.0;
-    cout << b << "\t" << a<<endl;
-    cout << a+b<<endl;
+    string str= R"(awef
+    awejflk
+    awejflkawjelkf
+    //awefjlkawjeflk
+    \n\nawefjlkawefjlk
+    awewjlkawe
+    )";
 
+    cout << str;
+
+    int &&a = 3;
+    int &b = 4;
+    cout << a << endl;
 }
