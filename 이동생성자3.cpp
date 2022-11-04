@@ -1,78 +1,67 @@
 #include <iostream>
 #include <cstring>
 
-class MyString {
-  char *string_content;  // ë¬¸ìì—´ ë°ì´í„°ë¥¼ ê°€ë¦¬í‚¤ëŠ” í¬ì¸í„°
-  int string_length;     // ë¬¸ìì—´ ê¸¸ì´
+using namespace std;
 
-  int memory_capacity;  // í˜„ì¬ í• ë‹¹ëœ ìš©ëŸ‰
+class MyString{
+    char *string_content;
+    int string_length;
+    int memory_capacity;
 
     public:
     MyString();
-
-    // ë¬¸ìì—´ë¡œ ë¶€í„° ìƒì„±
     MyString(const char *str);
-
-    // ë³µì‚¬ ìƒì„±ì
     MyString(const MyString &str);
-
-    // ì´ë™ ìƒì„±ì
     MyString(MyString &&str);
-
-    // ì¼ë°˜ì ì¸ ëŒ€ì… ì—°ì‚°ì
-    MyString &operator=(const MyString &s);
-
-    // ì´ë™ ëŒ€ì… ì—°ì‚°ì
-    MyString &operator=(MyString&& s);
-
+    MyString& operator=(const MyString &str);
+    MyString& operator=(MyString &&str);
     ~MyString();
-
     int length() const;
-
     void println();
 };
 
-MyString::MyString() {
-    std::cout << "ìƒì„±ì í˜¸ì¶œ ! " << std::endl;
-    string_length = 0;
-    memory_capacity = 0;
-    string_content = NULL;
+MyString::MyString(){
+    cout << "ÀÏ¹İ »ı¼ºÀÚ È£Ãâ!!!"<<endl;
+    string_length=0;
+    memory_capacity=0;
+    string_content=NULL;
 }
 
-MyString::MyString(const char *str) {
-    std::cout << "ìƒì„±ì í˜¸ì¶œ ! " << std::endl;
+MyString::MyString(const char *str){
+    cout << "ÀÏ¹İ »ı¼ºÀÚ È£Ãâ"<<endl;
     string_length = strlen(str);
     memory_capacity = string_length;
-    string_content = new char[string_length];
-
-    for (int i = 0; i != string_length; i++) string_content[i] = str[i];
+    string_content = new char[memory_capacity];
+    for(int i=0;i<memory_capacity;i++){
+        string_content[i] = str[i];
+    }
 }
-MyString::MyString(const MyString &str) {
-    std::cout << "ë³µì‚¬ ìƒì„±ì í˜¸ì¶œ ! " << std::endl;
-    string_length = str.string_length;
-    string_content = new char[string_length];
 
-    for (int i = 0; i != string_length; i++)
+MyString::MyString(const MyString &str){
+    cout << "º¹»ç »ı¼ºÀÚ È£Ãâ "<<endl;
+    string_length = str.length();
+    string_content = new char[string_length];
+    for(int i=0;i<memory_capacity;i++){
         string_content[i] = str.string_content[i];
+    }
 }
 MyString::MyString(MyString &&str) {
-    std::cout << "ì´ë™ ìƒì„±ì í˜¸ì¶œ !" << std::endl;
+    std::cout << "ÀÌµ¿ »ı¼ºÀÚ È£Ãâ !" << std::endl;
     string_length = str.string_length;
     string_content = str.string_content;
     memory_capacity = str.memory_capacity;
 
-    // ì„ì‹œ ê°ì²´ ì†Œë©¸ ì‹œì— ë©”ëª¨ë¦¬ë¥¼ í•´ì œí•˜ì§€
-    // ëª»í•˜ê²Œ í•œë‹¤.
+    // ÀÓ½Ã °´Ã¼ ¼Ò¸ê ½Ã¿¡ ¸Ş¸ğ¸®¸¦ ÇØÁ¦ÇÏÁö
+    // ¸øÇÏ°Ô ÇÑ´Ù.
     str.string_content = nullptr;
     str.string_length = 0;
     str.memory_capacity = 0;
 }
 MyString::~MyString() {
     if (string_content) delete[] string_content;
-    }
-
+}
 MyString &MyString::operator=(const MyString &s) {
-    std::cout << "ë³µì‚¬!" << std::endl;
+    std::cout << "º¹»ç!" << std::endl;
     if (s.string_length > memory_capacity) {
         delete[] string_content;
         string_content = new char[s.string_length];
@@ -83,10 +72,10 @@ MyString &MyString::operator=(const MyString &s) {
         string_content[i] = s.string_content[i];
     }
 
-  return *this;
+    return *this;
 }
-MyString &MyString::operator=(MyString&& s) {
-    std::cout << "ì´ë™!" << std::endl;
+MyString& MyString::operator=(MyString&& s) {
+    std::cout << "ÀÌµ¿!" << std::endl;
     string_content = s.string_content;
     memory_capacity = s.memory_capacity;
     string_length = s.string_length;
@@ -103,22 +92,22 @@ void MyString::println() {
     std::cout << std::endl;
 }
 
-template <typename T>
+template <typename T> 
 void my_swap(T &a, T &b) {
     T tmp(std::move(a));
-    a = std::move(b);
+    a = std::move(b); // moveÇÔ¼ö¸¦ ÅëÇØ b¸¦ ¿ìÃø°ªÀ¸·Î º¯°æ
     b = std::move(tmp);
 }
 int main() {
     MyString str1("abc");
     MyString str2("def");
-    std::cout << "Swap ì „ -----" << std::endl;
+    std::cout << "Swap Àü -----" << std::endl;
     std::cout << "str1 : ";
     str1.println();
     std::cout << "str2 : ";
     str2.println();
 
-    std::cout << "Swap í›„ -----" << std::endl;
+    std::cout << "Swap ÈÄ -----" << std::endl;
     my_swap(str1, str2);
     std::cout << "str1 : ";
     str1.println();
