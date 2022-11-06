@@ -16,6 +16,9 @@ class A{
     void set_other(weak_ptr<A> o) { other= o;}
     void access_other(){
         shared_ptr<A> o = other.lock();
+        //weak_ptr은 자체로 원소를 참조할 수 없기 떄문에 shared_ptr로 변환하기 위해 lock함수 사용
+        //shared_ptr의 참조개수가 0개면 빈shared_ptr을 반환
+        //1개 이상이면 shared_ptr을 반환
         if(o){
             cout << "접근 : "<<o->name()<<endl;
         }

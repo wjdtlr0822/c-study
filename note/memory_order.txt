@@ -1,0 +1,6 @@
+memory_order_relaxed // cpu가 자유자재로 가능
+memory_order_release // 선언 전에 있던 것이 뒤로가는건 불가능
+memory_order_acquire //release와 반대로 뒤에 있는 값이 앞으로 오는건 불가능.
+memory_order_acq_rel // release와 acquire 같이
+
+memory_order_seq_cst // 순차실행 cpu에게는 매우 값비싼 명령어이다..
