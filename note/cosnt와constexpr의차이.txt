@@ -1,0 +1,17 @@
+const로 정의된 상수는 컴파일 타임에 그 값을 알 필요가없다.
+
+
+int a;
+
+// Do something...
+
+const int b = a;
+
+
+int a;
+
+// Do something...
+
+constexpr int b = a;  // ??
+
+constexpr 은 항상 const 이지만, const 는 constexpr 이 아닙니다!
