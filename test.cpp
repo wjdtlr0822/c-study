@@ -1,4 +1,5 @@
 #include <iostream>
+#include<string>
 
 template <typename T>
 void show_value(T t) {
@@ -16,4 +17,7 @@ int main() {
 
     int* p = &x;
     show_value(p);
+
+    std::string a="asdffawefaw";
+    std::cout << a.substr(3,2)<<std::endl;
 }
